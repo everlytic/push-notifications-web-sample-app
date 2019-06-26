@@ -15,11 +15,17 @@ window.addEventListener('load', function() {
                 SDK.subscribe({"email" : email}).then(function(){
                     window.localStorage.setItem('isPushEnabled', 'yes');
                     changePushButtonState('enabled');
+                }).catch(function(){
+                    window.localStorage.removeItem('isPushEnabled');
+                    changePushButtonState('disabled');
                 });
             } else {
                 SDK.subscribeAnonymous().then(function(){
                     window.localStorage.setItem('isPushEnabled', 'yes');
                     changePushButtonState('enabled');
+                }).catch(function(){
+                    window.localStorage.removeItem('isPushEnabled');
+                    changePushButtonState('disabled');
                 });
             }
         } else {
