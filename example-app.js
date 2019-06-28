@@ -3,6 +3,7 @@ window.addEventListener('load', function() {
     SDK.init({
         hash:"cD1lMjliNjNmNC05M2JlLTQxY2ItYmQ3NC0wM2Q0MDUyNzMzOWU7aT1odHRwOi8vbG9jYWwuZXZlcmx5dGljLmNvbTtwdWJrPUJDdnFhcm9pZHAzRnJvOGd6TGxFeXF5aHFmc2JqZVhXWkI2Mm9LQlRFZDBlNXVNWkNrWFllTGVqNXBKeWtkQU81ck9ZM1Y4Zk1tWXNNQzVFLXg0NEtjTQ==",
         // autoSubscribe: true, // Commented out so that we have full control over the user's subscribe
+        debug: true,
     });
 
     let subscriptionButton = document.querySelector('#push-subscription-button');
@@ -20,7 +21,7 @@ window.addEventListener('load', function() {
                     changePushButtonState('disabled');
                 });
             } else {
-                SDK.subscribeAnonymous().then(function(){
+                SDK.subscribeWithAskEmailPrompt().then(function(){
                     window.localStorage.setItem('isPushEnabled', 'yes');
                     changePushButtonState('enabled');
                 }).catch(function(){
