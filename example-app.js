@@ -36,6 +36,9 @@ window.addEventListener('load', function() {
             SDK.unsubscribe().then(function() {
                 window.localStorage.removeItem('isPushEnabled');
                 changePushButtonState('disabled');
+            }).catch(function(err) {
+                console.error(err);
+                changePushButtonState('enabled');
             });
         }
     });
